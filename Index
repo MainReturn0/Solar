@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SolarVolt BD — Solar Consultancy & Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f6f1;
+      --cream: #fdf9f0;
+      --sun: #f5a623;
+      --sun-deep: #e8850a;
+      --sun-light: #fde8b8;
+      --green: #1a6b3c;
+      --green-light: #e8f5ee;
+      --charcoal: #1a1a1a;
+      --mid: #555555;
+      --light: #999999;
+      --border: #e8e3d8;
+      --shadow: rgba(26,26,26,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px var(--shadow); }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--charcoal); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-logo span { color: var(--sun); }
+    .logo-sun {
+      width: 28px; height: 28px;
+      background: var(--sun);
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+      animation: pulse-sun 3s ease-in-out infinite;
+    }
+    @keyframes pulse-sun {
+      0%,100% { box-shadow: 0 0 0 0 rgba(245,166,35,0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(245,166,35,0); }
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links a {
+      text-decoration: none; color: var(--mid);
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta {
+      background: var(--charcoal) !important;
+      color: var(--white) !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--sun-deep) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--sun-light);
+      color: var(--sun-deep);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sun);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem; color: var(--mid);
+      line-height: 1.7; max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--sun);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600; font-size: 0.95rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(245,166,35,0.3);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      background: var(--sun-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(245,166,35,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500; font-size: 0.95rem;
+      border: 1.5px solid var(--border);
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-outline:hover {
+      border-color: var(--charcoal);
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeUp 0.8s 0.4s ease both;
+      position: relative;
+    }
+
+    .solar-illustration {
+      width: 100%; max-width: 480px;
+      position: relative;
+    }
+
+    .building-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px var(--shadow), 0 0 0 1px var(--border);
+      position: relative;
+    }
+
+    .building-roof {
+      background: linear-gradient(135deg, #2c3e50 0%, #3d5166 100%);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+
+    .panel {
+      aspect-ratio: 1.4;
+      background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 50%, #1e4d8c 100%);
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      animation: panel-glow 2s ease-in-out infinite alternate;
+    }
+    .panel:nth-child(odd) { animation-delay: 0.3s; }
+    .panel:nth-child(3n) { animation-delay: 0.6s; }
+
+    @keyframes panel-glow {
+      from { background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 50%, #1e4d8c 100%); }
+      to { background: linear-gradient(135deg, #1e4d8c 0%, #3b82e8 50%, #2563a8 100%); }
+    }
+
+    .sun-icon {
+      position: absolute; top: -12px; right: 20px;
+      width: 48px; height: 48px;
+      background: var(--sun);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 0 0 8px rgba(245,166,35,0.2), 0 0 0 16px rgba(245,166,35,0.1);
+      animation: spin-slow 20s linear infinite;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .stat-chip {
+      background: var(--off-white);
+      border-radius: 12px; padding: 0.8rem;
+      text-align: center;
+    }
+    .stat-chip .num {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.2rem; font-weight: 500;
+      color: var(--green);
+    }
+    .stat-chip .lbl {
+      font-size: 0.7rem; color: var(--light);
+      margin-top: 0.2rem;
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+      box-shadow: 0 8px 24px var(--shadow);
+      font-size: 0.8rem; font-weight: 600;
+      display: flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--border);
+      animation: float 4s ease-in-out infinite;
+    }
+    .floating-badge.badge-1 { top: -20px; left: -30px; animation-delay: 0s; }
+    .floating-badge.badge-2 { bottom: 40px; right: -30px; animation-delay: 2s; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--charcoal);
+      padding: 1.2rem 4rem;
+      display: flex; align-items: center; gap: 3rem;
+      overflow: hidden;
+    }
+    .trust-label {
+      color: var(--light); font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .trust-items {
+      display: flex; gap: 3rem; align-items: center;
+      animation: scroll-left 20s linear infinite;
+    }
+    .trust-item {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem; font-weight: 500;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 4rem; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem; color: var(--sun-deep);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--mid); font-size: 1.05rem;
+      line-height: 1.7; font-weight: 300;
+      max-width: 560px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+
+    .services-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--off-white);
+      border-radius: 20px; padding: 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px var(--shadow);
+      background: var(--white);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sun), var(--sun-deep));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--sun-light);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 1.2rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+    .service-card p {
+      color: var(--mid); font-size: 0.9rem;
+      line-height: 1.6; font-weight: 300;
+    }
+    .service-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--green-light);
+      color: var(--green);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.72rem; font-weight: 600;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--cream); }
+
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      margin-top: 4rem;
+    }
+
+    .why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .why-point {
+      display: flex; gap: 1rem;
+      padding: 1.2rem;
+      border-radius: 16px;
+      transition: background 0.2s;
+    }
+    .why-point:hover { background: var(--white); }
+
+    .why-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem; color: var(--sun-deep);
+      font-weight: 500; padding-top: 0.2rem;
+      flex-shrink: 0;
+    }
+    .why-point h4 {
+      font-weight: 600; margin-bottom: 0.3rem; font-size: 1rem;
+    }
+    .why-point p {
+      color: var(--mid); font-size: 0.88rem;
+      line-height: 1.6; font-weight: 300;
+    }
+
+    .why-visual {
+      background: var(--charcoal);
+      border-radius: 24px; padding: 2.5rem;
+      color: var(--white);
+    }
+    .why-visual h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .savings-calc { display: flex; flex-direction: column; gap: 1rem; }
+
+    .calc-row {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+    }
+    .calc-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .calc-value { font-family: 'DM Mono', monospace; font-weight: 500; }
+    .calc-value.highlight { color: var(--sun); font-size: 1.1rem; }
+    .calc-value.green { color: #4ade80; }
+
+    .calc-divider {
+      height: 1px; background: rgba(255,255,255,0.1);
+      margin: 0.5rem 0;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--white); }
+
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 4rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 32px; left: 10%; right: 10%;
+      height: 1px; background: var(--border);
+    }
+
+    .process-step { text-align: center; padding: 0 1.5rem; }
+
+    .step-circle {
+      width: 64px; height: 64px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 1.5rem;
+      transition: all 0.3s;
+      position: relative; z-index: 1;
+    }
+    .process-step:hover .step-circle {
+      border-color: var(--sun);
+      background: var(--sun-light);
+      transform: scale(1.1);
+    }
+
+    .step-num {
+      position: absolute; top: -8px; right: -8px;
+      width: 22px; height: 22px;
+      background: var(--sun);
+      border-radius: 50%;
+      font-size: 0.65rem; font-weight: 700;
+      color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .process-step h4 {
+      font-weight: 600; font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .process-step p {
+      color: var(--mid); font-size: 0.82rem;
+      line-height: 1.5; font-weight: 300;
+    }
+
+    /* ── NUMBERS ── */
+    .numbers-section {
+      background: linear-gradient(135deg, var(--green) 0%, #0f4a28 100%);
+      color: var(--white);
+      padding: 5rem 4rem;
+    }
+
+    .numbers-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; text-align: center;
+    }
+
+    .number-item .big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900;
+      color: var(--sun);
+      line-height: 1;
+    }
+    .number-item .unit {
+      font-size: 1.5rem; vertical-align: super;
+    }
+    .number-item p {
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem; font-weight: 300;
+    }
+
+    /* ── SUBSCRIPTION ── */
+    #subscription { background: var(--off-white); }
+
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+
+    .plan-card {
+      background: var(--white);
+      border-radius: 24px; padding: 2rem;
+      border: 1.5px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .plan-card.featured {
+      border-color: var(--sun);
+      background: var(--charcoal);
+      color: var(--white);
+    }
+    .plan-card.featured .plan-price,
+    .plan-card.featured .plan-name { color: var(--white); }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.6); }
+    .plan-card.featured .plan-feature { color: rgba(255,255,255,0.85); }
+    .plan-card.featured .plan-feature-icon { color: var(--sun); }
+
+    .featured-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--sun);
+      color: var(--white);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    .plan-name {
+      font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--light); margin-bottom: 0.5rem;
+    }
+    .plan-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900;
+      color: var(--charcoal); margin-bottom: 0.3rem;
+    }
+    .plan-price span { font-size: 1rem; font-weight: 400; }
+    .plan-desc {
+      color: var(--mid); font-size: 0.85rem;
+      margin-bottom: 1.5rem; font-weight: 300;
+    }
+
+    .plan-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+    .plan-feature {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem; color: var(--charcoal);
+    }
+    .plan-feature-icon { color: var(--green); font-size: 1rem; }
+
+    .plan-btn {
+      display: block; text-align: center;
+      padding: 0.8rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600;
+      font-size: 0.9rem; transition: all 0.2s;
+    }
+    .plan-btn-outline {
+      border: 1.5px solid var(--border);
+      color: var(--charcoal);
+    }
+    .plan-btn-outline:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+    .plan-btn-filled {
+      background: var(--sun); color: var(--white);
+      box-shadow: 0 4px 16px rgba(245,166,35,0.35);
+    }
+    .plan-btn-filled:hover { background: var(--sun-deep); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+      margin-top: 3rem;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: var(--sun-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-item h4 { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .contact-item p { color: var(--mid); font-size: 0.88rem; font-weight: 300; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--mid);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--charcoal);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--sun); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      background: var(--sun); color: var(--white);
+      border: none; padding: 1rem 2rem;
+      border-radius: 50px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(245,166,35,0.3);
+    }
+    .form-submit:hover {
+      background: var(--sun-deep);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand .nav-logo { color: var(--white); margin-bottom: 1rem; display: flex; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.6; font-weight: 300; }
+
+    .footer-col h5 {
+      color: var(--white); font-size: 0.8rem;
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block; color: rgba(255,255,255,0.5);
+      text-decoration: none; font-size: 0.85rem;
+      margin-bottom: 0.5rem; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--sun); }
+
+    .footer-bottom {
+      background: #111;
+      padding: 1rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .services-header { grid-template-columns: 1fr; gap: 1rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem 1.5rem; }
+      .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .trust-bar { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="logo-sun">☀️</span>
+    Solar<span>Volt</span> BD
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#process">Process</a>
+    <a href="#subscription">Plans</a>
+    <a href="#contact" class="nav-cta">Get Free Audit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">☀️ German Engineering · Bangladesh Future</div>
+    <h1>Solar Done<br><em>Right.</em> Finally.</h1>
+    <p class="hero-sub">
+      End-to-end solar consultancy for factories, buildings & businesses in Bangladesh. 
+      We design, supply, install and maintain — so you just save money.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get Free Roof Audit →</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="solar-illustration">
+      <div class="floating-badge badge-1">
+        🇩🇪 German-standard engineering
+      </div>
+      <div class="building-card">
+        <div class="building-roof">
+          <div class="sun-icon">☀</div>
+          <div class="panel-grid">
+            <div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div>
+            <div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div>
+            <div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-chip">
+            <div class="num">75%</div>
+            <div class="lbl">Bill Reduction</div>
+          </div>
+          <div class="stat-chip">
+            <div class="num">৳3</div>
+            <div class="lbl">Per kWh Cost</div>
+          </div>
+          <div class="stat-chip">
+            <div class="num">20yr</div>
+            <div class="lbl">Lifespan</div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-badge badge-2">
+        ✅ Maintenance included
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-label">Trusted by</span>
+  <div class="trust-items">
+    <span class="trust-item">🏭 Garment Factories</span>
+    <span class="trust-item">🏢 Commercial Buildings</span>
+    <span class="trust-item">🏥 Clinics & Hospitals</span>
+    <span class="trust-item">🏫 Schools & Universities</span>
+    <span class="trust-item">❄️ Cold Storage Units</span>
+    <span class="trust-item">🏗️ Real Estate Developers</span>
+    <!-- duplicate for infinite scroll -->
+    <span class="trust-item">🏭 Garment Factories</span>
+    <span class="trust-item">🏢 Commercial Buildings</span>
+    <span class="trust-item">🏥 Clinics & Hospitals</span>
+    <span class="trust-item">🏫 Schools & Universities</span>
+    <span class="trust-item">❄️ Cold Storage Units</span>
+    <span class="trust-item">🏗️ Real Estate Developers</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">// What We Do</div>
+      <h2 class="section-title">Full-stack solar.<br>From roof to report.</h2>
+    </div>
+    <p class="section-sub">
+      Unlike typical installers who disappear after setup, we stay with you. 
+      Every system we touch is monitored, maintained, and optimized — year after year.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🔍</div>
+      <h3>Site Audit & Consultation</h3>
+      <p>We analyze your roof, energy consumption patterns, shading, and load profile to design the optimal system. Data-driven, not guesswork.</p>
+      <span class="service-tag">Free initial audit</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📐</div>
+      <h3>System Design & Engineering</h3>
+      <p>German-standard system sizing with full technical documentation — panel layout, inverter specs, cable routing, and ROI projection.</p>
+      <span class="service-tag">Detailed ROI report</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📦</div>
+      <h3>Quality Supply & Import</h3>
+      <p>We source tier-1 panels (Longi, JA Solar) and certified inverters — no unknown brands, no fake warranties. Every component verified.</p>
+      <span class="service-tag">Manufacturer warranty</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">⚡</div>
+      <h3>Professional Installation</h3>
+      <p>Certified technicians, proper cable management, earthing, and safety compliance. Installed once, installed right.</p>
+      <span class="service-tag">Safety certified</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📊</div>
+      <h3>Performance Monitoring</h3>
+      <p>Live dashboard showing your system's output, savings, and CO₂ offset. Monthly reports sent directly to you.</p>
+      <span class="service-tag">Real-time dashboard</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <h3>Annual Maintenance Plan</h3>
+      <p>Quarterly cleaning, bi-annual inspections, emergency support. Subscription-based so your system performs at 100% — always.</p>
+      <span class="service-tag">Subscription model</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-label reveal">// Why SolarVolt BD</div>
+  <h2 class="section-title reveal">The gap in Bangladesh's<br>solar market is <em>service.</em></h2>
+
+  <div class="why-grid">
+    <div class="why-points">
+      <div class="why-point reveal">
+        <span class="why-num">01</span>
+        <div>
+          <h4>German engineering standards</h4>
+          <p>Our engineers are trained in Germany — one of the world's most demanding markets for precision and quality. That standard comes home with us.</p>
+        </div>
+      </div>
+      <div class="why-point reveal">
+        <span class="why-num">02</span>
+        <div>
+          <h4>We don't disappear after installation</h4>
+          <p>375 MW of solar sits unused in Dhaka because nobody maintains it. We're the company that actually stays — with a signed maintenance contract.</p>
+        </div>
+      </div>
+      <div class="why-point reveal">
+        <span class="why-num">03</span>
+        <div>
+          <h4>Bank financing available</h4>
+          <p>We work with partner banks to offer installment-based financing. You can start saving on electricity from day one — with zero upfront cost plans.</p>
+        </div>
+      </div>
+      <div class="why-point reveal">
+        <span class="why-num">04</span>
+        <div>
+          <h4>Real numbers, real documentation</h4>
+          <p>Every project comes with a full ROI analysis, technical specification sheet, and warranty documentation. Not just a quote on WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-visual reveal">
+      <h3>Factory Savings Calculator</h3>
+      <div class="savings-calc">
+        <div class="calc-row">
+          <span class="calc-label">Current electricity cost</span>
+          <span class="calc-value">৳12/kWh</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">Monthly electricity bill</span>
+          <span class="calc-value">৳80,000</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">Solar generation cost</span>
+          <span class="calc-value">৳3/kWh</span>
+        </div>
+        <div class="calc-divider"></div>
+        <div class="calc-row">
+          <span class="calc-label">Monthly saving</span>
+          <span class="calc-value green">৳60,000+</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">System payback period</span>
+          <span class="calc-value highlight">~18 months</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">Net profit over 20 years</span>
+          <span class="calc-value highlight">৳1.2 Crore+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers-section">
+  <div class="numbers-grid">
+    <div class="number-item reveal">
+      <div class="big-num">75<span class="unit">%</span></div>
+      <p>Reduction in electricity bills for commercial clients</p>
+    </div>
+    <div class="number-item reveal">
+      <div class="big-num">375<span class="unit">MW</span></div>
+      <p>Unused solar in Dhaka alone — all needing proper service</p>
+    </div>
+    <div class="number-item reveal">
+      <div class="big-num">20<span class="unit">yr</span></div>
+      <p>System lifespan with proper maintenance</p>
+    </div>
+    <div class="number-item reveal">
+      <div class="big-num">1<span class="unit">%</span></div>
+      <p>New import duty on solar panels — lowest ever in BD</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label reveal">// How It Works</div>
+  <h2 class="section-title reveal">Simple process.<br>Serious results.</h2>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-circle">
+        🔍
+        <span class="step-num">1</span>
+      </div>
+      <h4>Free Site Audit</h4>
+      <p>We visit your property, analyze your roof and current electricity bills. No cost, no commitment.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-circle">
+        📐
+        <span class="step-num">2</span>
+      </div>
+      <h4>Custom Design</h4>
+      <p>Our engineers create a tailored system design with full financial projections and ROI timeline.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-circle">
+        ⚡
+        <span class="step-num">3</span>
+      </div>
+      <h4>Installation</h4>
+      <p>Professional installation in days, not weeks. With full safety compliance and documentation.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-circle">
+        📊
+        <span class="step-num">4</span>
+      </div>
+      <h4>Monitor & Maintain</h4>
+      <p>Ongoing performance monitoring, cleaning, and maintenance through your subscription plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIPTION -->
+<section id="subscription">
+  <div class="section-label reveal">// Maintenance Plans</div>
+  <h2 class="section-title reveal">Your system deserves<br>a plan that lasts.</h2>
+  <p class="section-sub reveal">Annual maintenance contracts that keep your system at peak performance — because a dirty or faulty panel is money lost every day.</p>
+
+  <div class="plans-grid">
+    <div class="plan-card reveal">
+      <div class="plan-name">Basic</div>
+      <div class="plan-price">৳8,000<span>/year</span></div>
+      <div class="plan-desc">For small rooftop systems up to 10 kWp</div>
+      <div class="plan-features">
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> 2× annual panel cleaning</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> 1× annual inspection</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> WhatsApp support</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Annual performance report</div>
+      </div>
+      <a href="#contact" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+
+    <div class="plan-card featured reveal">
+      <div class="featured-badge">Most Popular</div>
+      <div class="plan-name">Professional</div>
+      <div class="plan-price">৳22,000<span>/year</span></div>
+      <div class="plan-desc">For commercial buildings & mid-size factories</div>
+      <div class="plan-features">
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> 4× quarterly cleaning</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> 2× full inspections</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Live monitoring dashboard</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Monthly performance reports</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Priority emergency response</div>
+      </div>
+      <a href="#contact" class="plan-btn plan-btn-filled">Get Started</a>
+    </div>
+
+    <div class="plan-card reveal">
+      <div class="plan-name">Industrial</div>
+      <div class="plan-price">Custom</div>
+      <div class="plan-desc">For large factories & industrial complexes</div>
+      <div class="plan-features">
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Monthly cleaning schedule</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Quarterly engineering review</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Dedicated account manager</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> 24/7 emergency support</div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span> Bank financing assistance</div>
+      </div>
+      <a href="#contact" class="plan-btn plan-btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">// Get In Touch</div>
+  <h2 class="section-title reveal">Start with a<br>free roof audit.</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <p class="section-sub" style="margin-bottom:1rem;">
+        No commitment. No sales pressure. We come to your site, analyze your situation, and give you a full report — free of charge.
+      </p>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Based in Dhaka, BD</h4>
+          <p>Serving Dhaka, Gazipur, Narayanganj & Chittagong</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Call or WhatsApp</h4>
+          <p>+880 1XXX-XXXXXX</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p>hello@solarvoltbd.com</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🇩🇪</div>
+        <div>
+          <h4>European Partner Office</h4>
+          <p>Paderborn, Germany — for supplier & technical partnerships</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Mr. Rahman" required />
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+880 1XXX-XXXXXX" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="you@company.com" />
+      </div>
+      <div class="form-group">
+        <label>Property Type</label>
+        <select required>
+          <option value="">Select type...</option>
+          <option>Garment / RMG Factory</option>
+          <option>Commercial Building</option>
+          <option>Cold Storage</option>
+          <option>Hospital / Clinic</option>
+          <option>School / University</option>
+          <option>Residential Building</option>
+          <option>Other Industrial</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Monthly Electricity Bill (approx.)</label>
+        <select>
+          <option value="">Select range...</option>
+          <option>Under ৳20,000</option>
+          <option>৳20,000 – ৳50,000</option>
+          <option>৳50,000 – ৳1,00,000</option>
+          <option>৳1,00,000 – ৳5,00,000</option>
+          <option>Above ৳5,00,000</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (optional)</label>
+        <textarea placeholder="Tell us about your property or any specific requirements..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Request Free Audit →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <a href="#" class="nav-logo" style="margin-bottom:1rem;">
+      <span class="logo-sun">☀️</span>
+      Solar<span style="color:var(--sun)">Volt</span> BD
+    </a>
+    <p>German-standard solar consultancy, installation and maintenance for businesses across Bangladesh. Powering the future, one rooftop at a time.</p>
+  </div>
+  <div class="footer-col">
+    <h5>Services</h5>
+    <a href="#services">Site Audit</a>
+    <a href="#services">System Design</a>
+    <a href="#services">Installation</a>
+    <a href="#services">Monitoring</a>
+    <a href="#services">Maintenance</a>
+  </div>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <a href="#why">About Us</a>
+    <a href="#process">How It Works</a>
+    <a href="#subscription">Plans</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-col">
+    <h5>Contact</h5>
+    <a href="#">Dhaka, Bangladesh</a>
+    <a href="#">Paderborn, Germany</a>
+    <a href="#">hello@solarvoltbd.com</a>
+    <a href="#">WhatsApp Us</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 SolarVolt BD. All rights reserved.</span>
+  <span>Made with ☀️ in Germany &amp; Bangladesh</span>
+</div>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✅ Request Sent! We\'ll contact you within 24 hours.';
+    btn.style.background = 'var(--green)';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
